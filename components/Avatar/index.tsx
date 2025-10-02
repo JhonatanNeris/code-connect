@@ -8,11 +8,11 @@ type AvatarProps = {
 
 const Avatar = ({src, name}: AvatarProps) => {
     return (
-        <ul className="flex gap-1">
+        <ul className="flex gap-2 items-center">
             <li>
                 <Image src={src} alt={`Avatar do(a) ${name}`} width={32} height={32}/>
             </li>
-            <li>
+            <li className="text-[#888888] leading-[1.5]">
                 @{name}
             </li>
 
