@@ -1,4 +1,5 @@
 import CardPost from "@/components/CardPost";
+import Link from "next/link";
 
 type ResponseApi = {
   first: number;
@@ -26,6 +27,8 @@ type Post = {
 
 }
 
+
+
 const getAllPosts = async (page: number): Promise<ResponseApi> => {
   const res = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
   if (!res.ok) {
@@ -41,14 +44,20 @@ const getAllPosts = async (page: number): Promise<ResponseApi> => {
     };
   }
 
-  console.log("TESTANDO RESPOSTA",res)
   return res.json()
 }
 
-export default async function Home() {
+// Tipagem explícita do parâmetro da página:
+type PageProps = {
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-  const { data: posts } = await getAllPosts(1)
-  console.log(posts)
+
+export default async function Home({ searchParams }: PageProps) {
+
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const { data: posts, prev, next } = await getAllPosts(currentPage)
 
   return (
     <main className="flex flex-wrap justify-between gap-6">
@@ -57,6 +66,10 @@ export default async function Home() {
       ) : (
         <p>Nenhum post encontrado.</p>
       )}
+
+      {prev && <Link href={`?page=${prev}`}>Página anterior</Link>}
+      {next && <Link href={`?page=${next}`} className="text-green-500">Próxima página</Link>}
+
       <div>
 
       </div>
