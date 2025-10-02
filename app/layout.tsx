@@ -37,9 +37,13 @@ export default function RootLayout({
       <body
         className={`${geistPrompt.variable} antialiased`}
       >
-        <div className="w-[1200px] mx-auto my-[56px] flex gap-[28px] max-w-[95%]">
-          <Aside />
-          {children}
+        <div className="w-[1200px] mx-auto my-[56px] flex gap-[27px] max-w-[95%] min-h-100vh">
+          <div>
+            <Aside />
+          </div>
+          <div>
+            {children}
+          </div>
         </div>
       </body>
     </html>
