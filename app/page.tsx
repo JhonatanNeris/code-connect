@@ -67,12 +67,11 @@ export default async function Home({ searchParams }: PageProps) {
         <p>Nenhum post encontrado.</p>
       )}
 
-      {prev && <Link href={`?page=${prev}`}>Página anterior</Link>}
-      {next && <Link href={`?page=${next}`} className="text-green-500">Próxima página</Link>}
-
-      <div>
-
+      <div className="grow text-center">
+        {prev && <Link href={`?page=${prev}`} className="text-[#81FE88] underline leading-[1.5]">Página anterior</Link>}
+        {next && <Link href={`?page=${next}`} className="text-[#81FE88] underline leading-[1.5]">Próxima página</Link>}
       </div>
+      
     </main>
   );
 }
