@@ -23,7 +23,7 @@ type CardPostProps = {
 const CardPost = ({ cover, title, body, author, slug }: CardPostProps) => {
     return (
         <Link href={`posts/${slug}`}>
-            <article className=" w-[486px] rounded-[8px] bg-[#171D1F]">
+            <article className=" w-[486px] rounded-[8px] bg-[#171D1F] h-[100%]">
                 <header className="rounded-t-[8px] bg-[#888] p-[24px]">
                     <figure>
                         <Image src={cover} alt={title} width={438} height={133} className="rounded-[8px]" />
